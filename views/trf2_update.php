@@ -8,7 +8,7 @@
 </div>
 
 <?php if ($count_calc > 0) : ?>
-    <form class="forms px-1" target="_blank" method="post" action="<?php echo BASE_URL; ?>trf2/update/<?php echo $trf2_info['ID']; ?>">
+    <form class="forms px-1" method="post">
     <?php else : ?>
         <form class="forms border rounded-md px-1 bg-slate-100" target="_blank" method="post" action="<?php echo BASE_URL; ?>proposta/store">
         <?php endif; ?>
@@ -253,7 +253,8 @@
                     </div>
                 </div>
                 <div class="w-full flex justify-center py-3">
-                    <button class="btn-success hover:btn-success--hover" type="submit"><i class="fa-solid fa-file-contract"></i> SALVAR PROPOSTA</button>
+                    <button class="btn-success hover:btn-success--hover mx-1" type="submit" formaction="<?php echo BASE_URL; ?>trf2/update/<?php echo $trf2_info['ID']; ?>"><i class="fa-solid fa-file-contract"></i> GERAR PROPOSTA</button>
+                    <button class="btn-success hover:btn-success--hover mx-1" type="submit" formaction="<?php echo BASE_URL; ?>trf2/update/<?php echo $trf2_info['ID']; ?>"><i class="fa-regular fa-floppy-disk"></i> SALVAR PROPOSTA</button>
                 </div>
             </div>
         </form>

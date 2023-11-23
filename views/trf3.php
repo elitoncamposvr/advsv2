@@ -29,7 +29,10 @@
 
 <?php if ($trf3_list) : ?>
 	<div class="table-header">
-		<div class="w-1/12">#</div>
+		<div class="w-1/12 flex">
+			<span><input type="checkbox" name="checkall" id="checkall" onclick="toggle(this);"></span>
+			<span>#</span>
+		</div>
 		<div class="w-1/12">Ano Proposta</div>
 		<div class="w-1/12">Número</div>
 		<div class="w-1/12">CPF/CNPJ</div>

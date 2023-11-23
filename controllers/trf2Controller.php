@@ -261,6 +261,105 @@ class trf2Controller extends controller
 		header("Location: " . BASE_URL . "trf2/edit/".$ID);
 	}
 
+	public function update_without_pdf($ID)
+	{
+		$u = new Users();
+		$trf2 = new Trf2();
+		$proposta = new Proposta();
+		$u->setLoggedUser();
+
+		if (!$u->hasPermission('trf2')) {
+			header("Location: " . BASE_URL . "home/unauthorized");
+		}
+
+		$ANO_PROPOSTA = addslashes($_POST['ANO_PROPOSTA']);
+		$NUMERO_DO_PRECATORIO = addslashes($_POST['NUMERO_DO_PRECATORIO']);
+		$CREDOR = addslashes($_POST['CREDOR']);
+		$CPF_CNPJ = addslashes($_POST['CPF_CNPJ']);
+		$ADVOGADO = addslashes($_POST['ADVOGADO']);
+		$OAB = addslashes($_POST['OAB']);
+		$REQUERIDO = addslashes($_POST['REQUERIDO']);
+		$VALOR = addslashes($_POST['VALOR']);
+		$OFICIO = addslashes($_POST['OFICIO']);
+		$PROCESSO_ORIGINARIO = addslashes($_POST['PROCESSO_ORIGINARIO']);
+		$STATUS = addslashes($_POST['STATUS']);
+		$HISTORICO = addslashes($_POST['HISTORICO']);
+		$TEL = addslashes($_POST['TEL']);
+		$CEL = addslashes($_POST['CEL']);
+		$TEL_FIXO = addslashes($_POST['TEL_FIXO']);
+		$EMAIL = addslashes($_POST['EMAIL']);
+		$ENDERECO = addslashes($_POST['ENDERECO']);
+
+		
+		$vlr_atualizado = addslashes($_POST['vlr_atualizado']);
+		$honorarios_perc = addslashes($_POST['honorarios_perc']);
+		$honorarios_vlr = addslashes($_POST['honorarios_vlr_exib']);
+		$ir_perc = addslashes($_POST['ir_perc']);
+		$ir_vlr = addslashes($_POST['ir_vlr']);
+		$rra_perc = addslashes($_POST['rra_perc']);
+		$rra_vlr = addslashes($_POST['rra_vlr']);
+		$pss_perc = addslashes($_POST['pss_perc']);
+		$pss_vlr = addslashes($_POST['pss_vlr_exib']);
+		$vlr_liquido = addslashes($_POST['vlr_liquido_exib']);
+		$proposta_vlr = addslashes($_POST['proposta_vlr']);
+		$proposta_perc = addslashes($_POST['proposta_perc']);
+		$max_perc = addslashes($_POST['max_perc']);
+		$max_vlr = addslashes($_POST['max_vlr_exib']);
+		$id_processo = addslashes($_POST['id_processo']);
+		$tipo = addslashes($_POST['tipo']);
+		$id_tabela = addslashes($_POST['id_tabela']);
+		$calc_id = addslashes($_POST['calc_id']);
+
+		if (!empty($_POST['user_id'])) {
+			$user_id = addslashes($_POST['user_id']);
+		} else {
+			$user_id = 'empty';
+		}
+
+		$trf2->update(
+			$ID,
+			$ANO_PROPOSTA,
+			$NUMERO_DO_PRECATORIO,
+			$CREDOR,
+			$CPF_CNPJ,
+			$ADVOGADO,
+			$OAB,
+			$REQUERIDO,
+			$VALOR,
+			$OFICIO,
+			$PROCESSO_ORIGINARIO,
+			$STATUS,
+			$HISTORICO,
+			$TEL,
+			$CEL,
+			$TEL_FIXO,
+			$EMAIL,
+			$ENDERECO,
+			$user_id
+		);
+
+		$proposta->update(
+			$calc_id, 
+			$vlr_atualizado, 
+			$honorarios_perc, 
+			$honorarios_vlr, 
+			$ir_perc, $ir_vlr, 
+			$rra_perc, $rra_vlr, 
+			$pss_perc, 
+			$pss_vlr, 
+			$vlr_liquido, 
+			$proposta_perc, 
+			$proposta_vlr, 
+			$max_perc, 
+			$max_vlr, 
+			$id_processo, 
+			$tipo, 
+			$id_tabela
+		);
+
+		header("Location: " . BASE_URL . "trf2/edit/".$ID);
+	}
+
 	public function show($id)
 	{
 		$data = array();

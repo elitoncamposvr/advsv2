@@ -30,7 +30,10 @@
 
 <?php if ($tjsp_list) : ?>
 	<div class="table-header">
-		<div class="w-1/12">#</div>
+		<div class="w-1/12 flex">
+			<span><input type="checkbox" name="checkall" id="checkall" onclick="toggle(this);"></span>
+			<span>#</span>
+		</div>
 		<div class="w-2/12">Processo</div>
 		<div class="w-1/12">Nome</div>
 		<div class="w-1/12">CPF</div>

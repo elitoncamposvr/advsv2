@@ -211,6 +211,78 @@ class Tjsp extends model
 		}
 	}
 
+	public function update_without_pdf(
+		$id,
+		$processo,
+		$nat,
+		$nome,
+		$cpf,
+		$n_ordem,
+		$nome_advg,
+		$oab,
+		$vlr_pago,
+		$saldo,
+		$tipo,
+		$status,
+		$historico,
+		$tel,
+		$cel,
+		$tel_fixo,
+		$email,
+		$endereco,
+		$user_id
+
+	) {
+
+		$sql = $this->db->prepare("
+		UPDATE 
+			tjsp 
+		SET  
+		processo = :processo,
+		nat = :nat,
+		nome = :nome,
+		cpf = :cpf,
+		n_ordem = :n_ordem,
+		nome_advg = :nome_advg,
+		oab = :oab,
+		vlr_pago = :vlr_pago,
+		saldo = :saldo,
+		tipo = :tipo,
+		status = :status,
+		historico = :historico,
+		tel = :tel,
+		cel = :cel,
+		tel_fixo = :tel_fixo,
+		email = :email,
+		endereco = :endereco
+		WHERE 
+			id = :id");
+		$sql->bindValue(":id", $id);
+		$sql->bindValue(":processo", $processo);
+		$sql->bindValue(":nat", $nat);
+		$sql->bindValue(":nome", $nome);
+		$sql->bindValue(":cpf", $cpf);
+		$sql->bindValue(":n_ordem", $n_ordem);
+		$sql->bindValue(":nome_advg", $nome_advg);
+		$sql->bindValue(":oab", $oab);
+		$sql->bindValue(":vlr_pago", $vlr_pago);
+		$sql->bindValue(":saldo", $saldo);
+		$sql->bindValue(":tipo", $tipo);
+		$sql->bindValue(":status", $status);
+		$sql->bindValue(":historico", $historico);
+		$sql->bindValue(":tel", $tel);
+		$sql->bindValue(":cel", $cel);
+		$sql->bindValue(":tel_fixo", $tel_fixo);
+		$sql->bindValue(":email", $email);
+		$sql->bindValue(":endereco", $endereco);
+		$sql->execute();
+
+		if ($user_id != 'empty') {
+			$sql = $this->db->prepare("UPDATE tjsp SET user_id = '$user_id' WHERE id = '$id'");
+			$sql->execute();
+		}
+	}
+
 	public function getSearch($search)
 	{
 		$array = array();
