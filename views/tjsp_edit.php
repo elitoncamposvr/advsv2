@@ -213,7 +213,7 @@
                         <input type="text" name="ir_perc" id="ir_perc" class="w-1/2 mr-1" value="<?php echo $calculadora['ir_perc']; ?>" onblur="valorAtualizado()">
                         <input type="hidden" name="ir_vlr" id="ir_vlr" value="<?php echo $calculadora['ir_vlr']; ?>">
                         <input type="text" name="ir_vlr" id="ir_vlr_exib" readonly value="<?php echo $calculadora['ir_vlr']; ?>" class="w-1/2 input-readonly">
-                    </div>
+                    </div>success--
                     <div class="w-1/12">
 
                     </div>
@@ -257,7 +257,7 @@
                 </div>
                 <div class="w-full flex justify-center py-3">
                     <button class="btn-success hover:btn-success--hover mx-1" type="submit" formaction="<?php echo BASE_URL; ?>tjsp/update/<?php echo $tjsp_info['id']; ?>"><i class="fa-solid fa-file-contract"></i> GERAR PROPOSTA</button>
-                    <button class="btn-success hover:btn-success--hover mx-1" type="submit" formaction="<?php echo BASE_URL; ?>tjsp/update_without_pdf/<?php echo $tjsp_info['id']; ?>"><i class="fa-regular fa-floppy-disk"></i> SALVAR PROPOSTA</button>
+                    <button class="btn hover:btn-hover mx-1" type="submit" formaction="<?php echo BASE_URL; ?>tjsp/update_without_pdf/<?php echo $tjsp_info['id']; ?>"><i class="fa-regular fa-floppy-disk"></i> SALVAR PROPOSTA</button>
                 </div>
             </div>
         </form>

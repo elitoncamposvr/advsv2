@@ -289,7 +289,7 @@
                 </div>
                 <div class="w-full flex justify-center py-3">
                     <button class="btn-success hover:btn-success--hover mx-1" type="submit" formaction="<?php echo BASE_URL; ?>trf3/update/<?php echo $trf3_info['id']; ?>"><i class="fa-solid fa-file-contract"></i> GERAR PROPOSTA</button>
-                    <button class="btn-success hover:btn-success--hover mx-1" type="submit" formaction="<?php echo BASE_URL; ?>trf3/update_without_pdf/<?php echo $trf3_info['id']; ?>"><i class="fa-regular fa-floppy-disk"></i>  SALVAR PROPOSTA</button>
+                    <button class="btn hover:btn-hover mx-1" type="submit" formaction="<?php echo BASE_URL; ?>trf3/update_without_pdf/<?php echo $trf3_info['id']; ?>"><i class="fa-regular fa-floppy-disk"></i>  SALVAR PROPOSTA</button>
                 </div>
             </div>
         </form>
