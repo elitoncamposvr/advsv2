@@ -72,6 +72,7 @@
         padding: 10px 0;
         text-align: center;
         font-weight: bold;
+        font-size: 18px;
     }
 
     .data {
@@ -81,6 +82,7 @@
         border-radius: 6px;
         padding: 10px 0;
         text-align: center;
+        font-size: 18px;
     }
 
     .label-2 {
@@ -93,6 +95,7 @@
         padding: 10px 0;
         text-align: center;
         font-weight: bold;
+        font-size: 18px;
     }
 
     .data-2 {
@@ -102,6 +105,7 @@
         border-radius: 6px;
         padding: 10px 0;
         text-align: center;
+        font-size: 18px;
     }
 
     .label-3 {
@@ -114,6 +118,7 @@
         padding: 10px 0;
         text-align: center;
         font-weight: bold;
+        font-size: 18px;
     }
 
     .data-perc {
@@ -127,6 +132,7 @@
         text-align: center;
         font-weight: bold;
         margin-left: 1%;
+        font-size: 18px;
     }
 
     .data-3 {
@@ -136,12 +142,13 @@
         border-radius: 6px;
         padding: 10px 0;
         text-align: center;
+        font-size: 18px;
     }
 
     h1 {
         text-align: center;
         font-size: 20px;
-        margin: 20px;
+        margin: 40px 0 20px 0;
         font-weight: 500;
     }
 
@@ -159,6 +166,10 @@
 
     .center{
         text-align: center;
+    }
+
+    .red{
+        color: red;
     }
 </style>
 
@@ -253,49 +264,25 @@
 
     <div class="table-line">
         <div class="label-3">
-            SIMULAÇÃO IMPOSTO IR:
-        </div>
-        <div class="data-perc">
-            &nbsp;<?php echo $proposta['ir_perc']; ?>
-        </div>
-        <div class="data-3">
-            &nbsp;<?php echo $proposta['ir_vlr']; ?>
-        </div>
-    </div>
-
-    <div class="table-line">
-        <div class="label-3">
-            RETENÇÃO IMPOSTO IR-RRA:
-        </div>
-        <div class="data-perc">
-            &nbsp;<?php echo $proposta['rra_perc']; ?>
-        </div>
-        <div class="data-3">
-            &nbsp;<?php echo $proposta['rra_vlr']; ?>
-        </div>
-    </div>
-
-    <div class="table-line">
-        <div class="label-3">
-            RETENÇÃO IMPOSTO PSS:
-        </div>
-        <div class="data-perc">
-            &nbsp;<?php echo $proposta['pss_perc']; ?>
-        </div>
-        <div class="data-3">
-            &nbsp;<?php echo $proposta['pss_vlr_exib']; ?>
-        </div>
-    </div>
-
-    <div class="table-line">
-        <div class="label-3">
             RESERVA DE HONORÁRIOS:
         </div>
-        <div class="data-perc">
+        <div class="data-perc red">
             &nbsp;<?php echo $proposta['honorarios_perc']; ?>
         </div>
-        <div class="data-3">
-            &nbsp;<?php echo $proposta['honorarios_vlr_exib']; ?>
+        <div class="data-3 red">
+            - &nbsp;<?php echo $proposta['honorarios_vlr_exib']; ?>
+        </div>
+    </div>
+
+    <div class="table-line">
+        <div class="label-3">
+            SIMULAÇÃO IMPOSTO IR:
+        </div>
+        <div class="data-perc red">
+            &nbsp;<?php echo $proposta['ir_perc']; ?>
+        </div>
+        <div class="data-3 red">
+            - &nbsp;<?php echo $proposta['ir_vlr']; ?>
         </div>
     </div>
 
