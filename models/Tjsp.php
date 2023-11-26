@@ -297,6 +297,42 @@ class Tjsp extends model
 		return $array;
 	}
 
+	public function getImages(){
+		$array = array();
+
+		$sql = $this->db->prepare("SELECT * FROM client_files");
+		$sql->execute();
+
+		if ($sql->rowCount() > 0) {
+			$array = $sql->fetchAll();
+		}
+
+		return $array;
+	}
+
+	public function sendFiles(
+		$doc_name,
+		$client_id,
+		$image,
+		$user_id
+	) {
+		$sql = $this->db->prepare("
+		INSERT INTO 
+			client_files
+		SET 
+			doc_name = :doc_name,
+			client_id = :client_id,
+			image = :image,
+			user_id = :user_id,
+			date_send = NOW()
+		");
+		$sql->bindValue(":doc_name", $doc_name);
+		$sql->bindValue(":client_id", $client_id);
+		$sql->bindValue(":image", $image);
+		$sql->bindValue(":user_id", $user_id);
+		$sql->execute();
+	}
+
 	public function destroy($id)
 	{
 		$sql = $this->db->prepare("DELETE FROM tjsp WHERE id = :id");
@@ -308,7 +344,7 @@ class Tjsp extends model
 	{
 		$array = explode(",", $delete_values);
 
-		foreach ($array as $id){
+		foreach ($array as $id) {
 			$sql = $this->db->prepare("DELETE FROM tjsp WHERE id = $id");
 			$sql->execute();
 		}

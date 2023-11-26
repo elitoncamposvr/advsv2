@@ -52,7 +52,7 @@
     }
 
     .btn {
-        @apply bg-slate-400 text-white py-2.5 px-4 rounded-md text-sm;
+        @apply bg-slate-400 text-white py-2.5 px-4 rounded-md text-sm cursor-pointer;
     }
 
     .btn-hover {
@@ -60,7 +60,7 @@
     }
 
     .btn-success{
-        @apply bg-sky-700 text-white py-2.5 px-4 rounded-md text-sm;
+        @apply bg-sky-700 text-white py-2.5 px-4 rounded-md text-sm cursor-pointer;
     }
 
     .btn-success--hover{
@@ -68,7 +68,7 @@
     }
 
     .btn-danger{
-        @apply bg-red-500 text-white py-1.5 px-4 rounded-md text-sm;
+        @apply bg-red-500 text-white py-2.5 px-4 rounded-md text-sm cursor-pointer;
     }
 
     .btn-danger--hover{
@@ -76,11 +76,19 @@
     }
 
     .btn-alert{
-        @apply bg-amber-400 text-white py-2.5 px-4 rounded-md text-sm;
+        @apply bg-amber-400 text-white py-2.5 px-4 rounded-md text-sm cursor-pointer;
     }
 
     .btn-alert--hover{
         @apply bg-amber-600;
+    }
+
+    .icon{
+        @apply text-sky-700 cursor-pointer;
+    }
+
+    .icon--hover{
+        @apply text-sky-900;
     }
 
     .input-line{
@@ -132,7 +140,15 @@
         @apply max-w-7xl w-full flex mx-auto justify-center items-center;
     }
 
+    /* MODAL */
+    .modal {
+        @apply hidden fixed top-0 left-0 w-full h-screen overflow-auto bg-slate-950/90 items-center;
+      }
 
+      
+      .modal-content {
+        @apply flex flex-col bg-white mx-auto p-5 border max-w-lg w-11/12 rounded-md;
+      }
 
 
 /*

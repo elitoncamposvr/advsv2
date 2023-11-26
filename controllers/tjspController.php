@@ -61,7 +61,7 @@ class tjspController extends controller
 		$q5 = '15';
 
 		$data['admin'] = $u->hasPermission('is_admin');
-	$data['users'] = $u->getListQualifiedsUsers($q1, $q2, $q3, $q4, $q5);
+		$data['users'] = $u->getListQualifiedsUsers($q1, $q2, $q3, $q4, $q5);
 		$this->loadTemplate('tjsp_create', $data);
 	}
 
@@ -216,21 +216,23 @@ class tjspController extends controller
 			$user_id = 'empty';
 		}
 		$proposta->update(
-			$calc_id, 
-			$vlr_atualizado, 
-			$honorarios_perc, 
-			$honorarios_vlr, 
-			$ir_perc, $ir_vlr, 
-			$rra_perc, $rra_vlr, 
-			$pss_perc, 
-			$pss_vlr, 
-			$vlr_liquido, 
-			$proposta_perc, 
-			$proposta_vlr, 
-			$max_perc, 
-			$max_vlr, 
-			$id_processo, 
-			$tipo, 
+			$calc_id,
+			$vlr_atualizado,
+			$honorarios_perc,
+			$honorarios_vlr,
+			$ir_perc,
+			$ir_vlr,
+			$rra_perc,
+			$rra_vlr,
+			$pss_perc,
+			$pss_vlr,
+			$vlr_liquido,
+			$proposta_perc,
+			$proposta_vlr,
+			$max_perc,
+			$max_vlr,
+			$id_processo,
+			$tipo,
 			$id_tabela
 		);
 
@@ -255,7 +257,7 @@ class tjspController extends controller
 			$endereco,
 			$user_id
 		);
-		header("Location: " . BASE_URL . "tjsp/edit/".$id);
+		header("Location: " . BASE_URL . "tjsp/edit/" . $id);
 	}
 
 	public function update_without_pdf($id)
@@ -314,21 +316,23 @@ class tjspController extends controller
 		}
 
 		$proposta->update(
-			$calc_id, 
-			$vlr_atualizado, 
-			$honorarios_perc, 
-			$honorarios_vlr, 
-			$ir_perc, $ir_vlr, 
-			$rra_perc, $rra_vlr, 
-			$pss_perc, 
-			$pss_vlr, 
-			$vlr_liquido, 
-			$proposta_perc, 
-			$proposta_vlr, 
-			$max_perc, 
-			$max_vlr, 
-			$id_processo, 
-			$tipo, 
+			$calc_id,
+			$vlr_atualizado,
+			$honorarios_perc,
+			$honorarios_vlr,
+			$ir_perc,
+			$ir_vlr,
+			$rra_perc,
+			$rra_vlr,
+			$pss_perc,
+			$pss_vlr,
+			$vlr_liquido,
+			$proposta_perc,
+			$proposta_vlr,
+			$max_perc,
+			$max_vlr,
+			$id_processo,
+			$tipo,
 			$id_tabela
 		);
 
@@ -353,7 +357,7 @@ class tjspController extends controller
 			$endereco,
 			$user_id
 		);
-		header("Location: " . BASE_URL . "tjsp/edit/".$id);
+		header("Location: " . BASE_URL . "tjsp/edit/" . $id);
 	}
 
 	public function show($id)
@@ -438,7 +442,24 @@ class tjspController extends controller
 		$this->loadTemplate("tjsp_search", $data);
 	}
 
-	public function destroy($id)
+	public function files($id)
+	{
+		$data = array();
+		$u = new Users();
+		$tjsp = new Tjsp();
+		$u->setLoggedUser();
+
+		if (!$u->hasPermission('tjsp')) {
+			header("Location: " . BASE_URL . "home/unauthorized");
+		}
+
+		$data['tjsp_info'] = $tjsp->getInfo($id);
+		$data['images'] = $tjsp->getImages();
+		$data['admin'] = $u->hasPermission('is_admin');
+		$this->loadTemplate("tjsp_files", $data);
+	}
+
+	public function files_send()
 	{
 		$u = new Users();
 		$tjsp = new Tjsp();
@@ -448,11 +469,41 @@ class tjspController extends controller
 			header("Location: " . BASE_URL . "home/unauthorized");
 		}
 
-		$tjsp->destroy($id);
-		header("Location: " . BASE_URL . "tjsp");
+
+		if (isset($_FILES['image']) && !empty($_FILES['image'])) {
+			$doc_name = addslashes($_POST['doc_name']);
+			$client_id = addslashes($_POST['client_id']);
+			$allowedFormats = array("png", "jpg", "jpeg", "gif", "doc", "docx", "xlxs", "csv", "xls",  "pdf", "txt");
+			$extension = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
+
+			if (in_array($extension, $allowedFormats)) :
+				$dir = "images/tjsp/";
+				$tempFile = $_FILES['image']['tmp_name'];
+				$image = "tjsp_" .  $client_id . "_" . uniqid() . ".$extension";
+
+				if (move_uploaded_file($tempFile, $dir . $image)) :
+					echo "Upload feito com sucesso";
+				else :
+					echo "Erro! Não foi possivel fazer o upload";
+				endif;
+			else :
+				echo "Formato inválido";
+
+			endif;
+		}
+
+		$tjsp->sendFiles(
+			$doc_name,
+			$client_id,
+			$image,
+			$u->getId()
+		);
+
+		header("Location: " . BASE_URL . "tjsp/files/" . $client_id);
 	}
 
-	public function settings_edit() {
+	public function settings_edit()
+	{
 		$u = new Users();
 		$tjsp = new Tjsp();
 		$u->setLoggedUser();
@@ -471,7 +522,9 @@ class tjspController extends controller
 		header("Location: " . BASE_URL . "users/settings_success");
 	}
 
-	public function delete_check_users(){
+
+	public function destroy($id)
+	{
 		$u = new Users();
 		$tjsp = new Tjsp();
 		$u->setLoggedUser();
@@ -480,12 +533,26 @@ class tjspController extends controller
 			header("Location: " . BASE_URL . "home/unauthorized");
 		}
 
-		
+		$tjsp->destroy($id);
+		header("Location: " . BASE_URL . "tjsp");
+	}
+
+
+	public function delete_check_users()
+	{
+		$u = new Users();
+		$tjsp = new Tjsp();
+		$u->setLoggedUser();
+
+		if (!$u->hasPermission('tjsp')) {
+			header("Location: " . BASE_URL . "home/unauthorized");
+		}
+
+
 		$delete_values = addslashes($_POST['checks_value']);
 
 		$tjsp->deleteCheckUsers($delete_values);
 
 		header("Location: " . BASE_URL . "tjsp");
-
 	}
 }
