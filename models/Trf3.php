@@ -258,6 +258,44 @@ class Trf3 extends model
 		return $array;
 	}
 
+	public function getImages($id){
+		$array = array();
+
+		$sql = $this->db->prepare("SELECT * FROM client_files WHERE client_type = 'trf3' AND client_id = :id");
+		$sql->bindValue(':id',$id);
+		$sql->execute();
+
+		if ($sql->rowCount() > 0) {
+			$array = $sql->fetchAll();
+		}
+
+		return $array;
+	}
+
+	public function sendFiles(
+		$doc_name,
+		$client_id,
+		$image,
+		$user_id
+	) {
+		$sql = $this->db->prepare("
+		INSERT INTO 
+			client_files
+		SET 
+			doc_name = :doc_name,
+			client_id = :client_id,
+			client_type = 'trf3',
+			image = :image,
+			user_id = :user_id,
+			date_send = NOW()
+		");
+		$sql->bindValue(":doc_name", $doc_name);
+		$sql->bindValue(":client_id", $client_id);
+		$sql->bindValue(":image", $image);
+		$sql->bindValue(":user_id", $user_id);
+		$sql->execute();
+	}
+
 	public function destroy($id)
 	{
 		$sql = $this->db->prepare("DELETE FROM trf3 WHERE id = :id");

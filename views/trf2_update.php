@@ -7,6 +7,10 @@
     </span>
 </div>
 
+<div class="w-full">
+    <a href="<?php echo BASE_URL; ?>trf2/files/<?php echo $trf2_info['ID']; ?>" class="btn-success hover:btn-success--hover"><i class="fa-solid fa-file-pdf"></i> ARQUIVOS DO CLIENTE</a>
+</div>
+
 <?php if ($count_calc > 0) : ?>
     <form class="forms px-1" method="post">
     <?php else : ?>

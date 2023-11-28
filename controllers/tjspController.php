@@ -454,7 +454,7 @@ class tjspController extends controller
 		}
 
 		$data['tjsp_info'] = $tjsp->getInfo($id);
-		$data['images'] = $tjsp->getImages();
+		$data['images'] = $tjsp->getImages($id);
 		$data['admin'] = $u->hasPermission('is_admin');
 		$this->loadTemplate("tjsp_files", $data);
 	}

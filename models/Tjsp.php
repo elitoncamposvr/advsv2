@@ -297,10 +297,11 @@ class Tjsp extends model
 		return $array;
 	}
 
-	public function getImages(){
+	public function getImages($id){
 		$array = array();
 
-		$sql = $this->db->prepare("SELECT * FROM client_files");
+		$sql = $this->db->prepare("SELECT * FROM client_files WHERE client_type = 'tjsp' AND client_id = :id");
+		$sql->bindValue(':id',$id);
 		$sql->execute();
 
 		if ($sql->rowCount() > 0) {
@@ -322,6 +323,7 @@ class Tjsp extends model
 		SET 
 			doc_name = :doc_name,
 			client_id = :client_id,
+			client_type = 'tjsp',
 			image = :image,
 			user_id = :user_id,
 			date_send = NOW()

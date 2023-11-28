@@ -450,6 +450,66 @@ class trf2Controller extends controller
         $this->loadTemplate("trf2_search", $data);
     }
 
+	public function files($id)
+	{
+		$data = array();
+		$u = new Users();
+		$trf2 = new Trf2();
+		$u->setLoggedUser();
+
+		if (!$u->hasPermission('tjsp')) {
+			header("Location: " . BASE_URL . "home/unauthorized");
+		}
+
+		$data['trf2_info'] = $trf2->getInfo($id);
+		$data['images'] = $trf2->getImages($id);
+		$data['admin'] = $u->hasPermission('is_admin');
+		$this->loadTemplate("trf2_files", $data);
+	}
+
+	public function files_send()
+	{
+		$u = new Users();
+		$trf2 = new Trf2();
+		$u->setLoggedUser();
+
+		if (!$u->hasPermission('tjsp')) {
+			header("Location: " . BASE_URL . "home/unauthorized");
+		}
+
+
+		if (isset($_FILES['image']) && !empty($_FILES['image'])) {
+			$doc_name = addslashes($_POST['doc_name']);
+			$client_id = addslashes($_POST['client_id']);
+			$allowedFormats = array("png", "jpg", "jpeg", "gif", "doc", "docx", "xlxs", "csv", "xls",  "pdf", "txt");
+			$extension = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
+
+			if (in_array($extension, $allowedFormats)) :
+				$dir = "images/trf2/";
+				$tempFile = $_FILES['image']['tmp_name'];
+				$image = "tjsp_" .  $client_id . "_" . uniqid() . ".$extension";
+
+				if (move_uploaded_file($tempFile, $dir . $image)) :
+					echo "Upload feito com sucesso";
+				else :
+					echo "Erro! Não foi possivel fazer o upload";
+				endif;
+			else :
+				echo "Formato inválido";
+
+			endif;
+		}
+
+		$trf2->sendFiles(
+			$doc_name,
+			$client_id,
+			$image,
+			$u->getId()
+		);
+
+		header("Location: " . BASE_URL . "trf2/files/" . $client_id);
+	}
+
 	public function settings_edit() {
 		$u = new Users();
 		$trf2 = new Trf2();
