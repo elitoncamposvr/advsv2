@@ -145,9 +145,12 @@
         @apply hidden fixed top-0 left-0 w-full h-screen overflow-auto bg-slate-950/90 items-center;
       }
 
-      
       .modal-content {
         @apply flex flex-col bg-white mx-auto p-5 border max-w-lg w-11/12 rounded-md;
+      }
+
+      .title{
+        @apply text-lg font-semibold py-1.5 border-b border-slate-300 mb-2.5;
       }
 
 

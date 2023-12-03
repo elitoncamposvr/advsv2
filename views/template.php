@@ -23,6 +23,7 @@
 				<a class="menu-link" href="<?php echo BASE_URL; ?>tjsp">TJSP</a>
 				<a class="menu-link" href="<?php echo BASE_URL; ?>trf2">TRF2</a>
 				<a class="menu-link" href="<?php echo BASE_URL; ?>trf3">TRF3</a>
+				<a class="menu-link" href="<?php echo BASE_URL; ?>report">Relatórios</a>
 				<a class="menu-link" href="<?php echo BASE_URL; ?>settings">Configurações</a>
 			</div>
 			<div class="menu-logout">
