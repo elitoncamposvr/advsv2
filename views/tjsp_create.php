@@ -4,33 +4,41 @@
 
 <form class="w-full py-2.5" action="<?php echo BASE_URL; ?>tjsp/store" method="post">
     <div class="input-line">
-        <div class="w-2/5 mr-1">
-            <label for="processo">Processo</label>
-            <input class="w-full" type="text" name="processo" id="processo" autofocus>
-        </div>
-        <div class="w-2/5 mr-1">
+        <div class="w-4/12 mr-1">
             <label for="nome">Nome</label>
             <input type="text" name="nome" id="nome" class="w-full">
         </div>
-        <div class="w-1/5">
-            <label for="nat">Nat</label>
-            <select name="nat" id="nat" class="w-full">
-                <option value="A">A</option>
-                <option value="O">O</option>
-            </select>
-        </div>
-    </div>
-    <div class="input-line">
-        <div class="w-2/5 mr-1">
+        <div class="w-4/12 mr-1">
             <label for="cpf">CPF</label>
             <input type="text" name="cpf" id="cpf" class="w-full">
         </div>
-        <div class="w-2/5 mr-1">
+        <div class="w-1/12 mr-1">
+            <label for="idade">Idade</label>
+            <input type="number" name="idade" id="idade" class="w-full">
+        </div>
+        <div class="w-1/12 mr-1">
+            <label for="falecido">Falecido</label>
+            <select name="falecido" id="falecido" class="w-full">
+                <option value="0">Não</option>
+                <option value="1">Sim</option>
+            </select>
+        </div>
+        <div class="w-2/12">
+            <label for="nat">Nat</label>
+            <input type="text" name="nat" id="nat" class="w-full">
+        </div>
+    </div>
+    <div class="input-line">
+    <div class="w-4/12 mr-1">
+            <label for="processo">Processo</label>
+            <input class="w-full" type="text" name="processo" id="processo" autofocus>
+        </div>
+        <div class="w-6/12 mr-1">
             <label for="nome_advg">Nome Advogado</label>
             <input type="text" name="nome_advg" id="nome_advg" class="w-full">
 
         </div>
-        <div class="w-1/5">
+        <div class="w-2/12">
             <label for="n_ordem">Nº Ordem</label>
             <input type="text" name="n_ordem" id="n_ordem" class="w-full">
         </div>
@@ -114,7 +122,7 @@
                     <?php endif; ?>
                 <?php endforeach ?>
             </select>
-            
+
         <?php else : ?>
 
             <select name="user_id" id="user_id" class="w-full">

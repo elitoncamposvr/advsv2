@@ -14,7 +14,7 @@
 <?php if ($count_calc > 0) : ?>
     <form class="forms px-1" method="post">
     <?php else : ?>
-        <form class="forms border rounded-md px-1 bg-slate-100" target="_blank" method="post" action="<?php echo BASE_URL; ?>proposta/store">
+        <form class="forms px-1" target="_blank" method="post" action="<?php echo BASE_URL; ?>proposta/store">
         <?php endif; ?>
         <div class="py-2.5">
             <div class="input-line">
@@ -201,7 +201,7 @@
 
         <?php if ($count_calc > 0) : ?>
             <div class="forms border rounded-md px-1 bg-slate-100">
-                <input type="hidden" name="calc_id" id="calc_id" value="<?php echo $count_calc;?>">
+                <input type="hidden" name="calc_id" id="calc_id" value="<?php echo $count_calc; ?>">
                 <input type="hidden" name="tipo" id="tipo" value="trf3">
                 <input type="hidden" name="id_processo" id="id_processo" value="<?php echo $trf3_info['numero']; ?>">
                 <input type="hidden" name="id_tabela" id="id_tabela" value="<?php echo $trf3_info['id']; ?>">
@@ -293,20 +293,21 @@
                 </div>
                 <div class="w-full flex justify-center py-3">
                     <button class="btn-success hover:btn-success--hover mx-1" type="submit" formaction="<?php echo BASE_URL; ?>trf3/update/<?php echo $trf3_info['id']; ?>"><i class="fa-solid fa-file-contract"></i> GERAR PROPOSTA</button>
-                    <button class="btn hover:btn-hover mx-1" type="submit" formaction="<?php echo BASE_URL; ?>trf3/update_without_pdf/<?php echo $trf3_info['id']; ?>"><i class="fa-regular fa-floppy-disk"></i>  SALVAR PROPOSTA</button>
+                    <button class="btn hover:btn-hover mx-1" type="submit" formaction="<?php echo BASE_URL; ?>trf3/update_without_pdf/<?php echo $trf3_info['id']; ?>"><i class="fa-regular fa-floppy-disk"></i> SALVAR PROPOSTA</button>
                 </div>
             </div>
         </form>
 
     <?php else : ?>
 
-            <input type="hidden" name="tipo" id="tipo" value="trf3">
-            <input type="hidden" name="id_processo" id="id_processo" value="<?php echo $trf3_info['numero']; ?>">
-            <input type="hidden" name="id_tabela" id="id_tabela" value="<?php echo $trf3_info['id']; ?>">
-            <input type="hidden" name="requerente" id="requerente" value="<?php echo $trf3_info['requerido']; ?>">
-            <input type="hidden" name="devedor" id="devedor" value="<?php echo $trf3_info['requerido']; ?>">
-            <input type="hidden" name="precatorio" id="precatorio" value="<?php echo $trf3_info['numero']; ?>">
-            <input type="hidden" name="advogado" id="advogado" value="<?php echo $trf3_info['advogado']; ?>">
+        <input type="hidden" name="tipo" id="tipo" value="trf3">
+        <input type="hidden" name="id_processo" id="id_processo" value="<?php echo $trf3_info['numero']; ?>">
+        <input type="hidden" name="id_tabela" id="id_tabela" value="<?php echo $trf3_info['id']; ?>">
+        <input type="hidden" name="requerente" id="requerente" value="<?php echo $trf3_info['requerido']; ?>">
+        <input type="hidden" name="devedor" id="devedor" value="<?php echo $trf3_info['requerido']; ?>">
+        <input type="hidden" name="precatorio" id="precatorio" value="<?php echo $trf3_info['numero']; ?>">
+        <input type="hidden" name="advogado" id="advogado" value="<?php echo $trf3_info['advogado']; ?>">
+        <div class="forms border rounded-md px-1 bg-slate-100">
             <div class="input-line">
                 <div class="w-1/12 text-sm flex items-center">
                     Valor atualizado:
@@ -390,11 +391,13 @@
                 </div>
             </div>
             <div class="w-full flex justify-center py-3">
-                <button class="btn-success hover:btn-success--hover" type="submit"><i class="fa-solid fa-file-contract"></i> GERAR PROPOSTA</button>
-            </div>
-        </form>
+                    <button class="btn-success hover:btn-success--hover mx-1" type="submit" formaction="<?php echo BASE_URL; ?>trf3/update/<?php echo $trf3_info['id']; ?>"><i class="fa-solid fa-file-contract"></i> GERAR PROPOSTA</button>
+                    <button class="btn hover:btn-hover mx-1" type="submit" formaction="<?php echo BASE_URL; ?>trf3/update_without_pdf/<?php echo $trf3_info['id']; ?>"><i class="fa-regular fa-floppy-disk"></i> SALVAR PROPOSTA</button>
+                </div>
+        </div>
+    </form>
 
-    <?php endif; ?>
+<?php endif; ?>
 
-    <script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/jquery.mask.js"></script>
-    <script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/calculadora.js"></script>
+<script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/jquery.mask.js"></script>
+<script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/calculadora.js"></script>

@@ -92,6 +92,8 @@ class Tjsp extends model
 		$tel_fixo,
 		$email,
 		$endereco,
+		$idade,
+		$falecido,
 		$user_id
 	) {
 
@@ -116,6 +118,8 @@ class Tjsp extends model
 			tel_fixo = :tel_fixo,
 			email = :email,
 			endereco = :endereco,
+			idade = :idade,
+			falecido = :falecido,
 			user_id = :user_id
 		");
 		$sql->bindValue(":processo", $processo);
@@ -135,6 +139,8 @@ class Tjsp extends model
 		$sql->bindValue(":tel_fixo", $tel_fixo);
 		$sql->bindValue(":email", $email);
 		$sql->bindValue(":endereco", $endereco);
+		$sql->bindValue(':idade', $idade);
+		$sql->bindValue(':falecido', $falecido);
 		$sql->bindValue(":user_id", $user_id);
 		$sql->execute();
 	}
@@ -157,6 +163,8 @@ class Tjsp extends model
 		$cel,
 		$tel_fixo,
 		$email,
+		$idade,
+		$falecido,
 		$endereco,
 		$user_id
 
@@ -182,6 +190,8 @@ class Tjsp extends model
 		cel = :cel,
 		tel_fixo = :tel_fixo,
 		email = :email,
+		idade = :idade,
+		falecido = :falecido,
 		endereco = :endereco
 		WHERE 
 			id = :id");
@@ -202,6 +212,8 @@ class Tjsp extends model
 		$sql->bindValue(":cel", $cel);
 		$sql->bindValue(":tel_fixo", $tel_fixo);
 		$sql->bindValue(":email", $email);
+		$sql->bindValue(":idade", $idade);
+		$sql->bindValue(":falecido", $falecido);
 		$sql->bindValue(":endereco", $endereco);
 		$sql->execute();
 
@@ -229,6 +241,8 @@ class Tjsp extends model
 		$cel,
 		$tel_fixo,
 		$email,
+		$idade, 
+		$falecido,
 		$endereco,
 		$user_id
 
@@ -254,6 +268,8 @@ class Tjsp extends model
 		cel = :cel,
 		tel_fixo = :tel_fixo,
 		email = :email,
+		idade = :idade,
+		falecido = :falecido,
 		endereco = :endereco
 		WHERE 
 			id = :id");
@@ -274,6 +290,8 @@ class Tjsp extends model
 		$sql->bindValue(":cel", $cel);
 		$sql->bindValue(":tel_fixo", $tel_fixo);
 		$sql->bindValue(":email", $email);
+		$sql->bindValue(":idade", $idade);
+		$sql->bindValue(":falecido", $falecido);
 		$sql->bindValue(":endereco", $endereco);
 		$sql->execute();
 

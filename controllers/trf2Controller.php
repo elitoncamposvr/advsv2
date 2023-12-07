@@ -447,6 +447,7 @@ class trf2Controller extends controller
 
 
         $data['list_search'] = $trf2->getSearch($search);
+		$data['admin'] = $u->hasPermission('is_admin');
         $this->loadTemplate("trf2_search", $data);
     }
 

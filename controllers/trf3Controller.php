@@ -460,6 +460,7 @@ class trf3Controller extends controller
 		$search = "$id $numero $requerentes $cpf $ano_proposta $status";
 
 		$data['list_search'] = $trf3->getSearch($search);
+		$data['admin'] = $u->hasPermission('is_admin');
 		$this->loadTemplate("trf3_search", $data);
 	}
 

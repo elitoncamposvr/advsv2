@@ -1,5 +1,16 @@
 <div class="breadcrumb">
-    <span class="breadcrumb-title">TRF2 <i class="fa-solid fa-chevron-right px-2"></i> Resultado Pesquisa</span>
+	<span class="breadcrumb-title">TRF2 <i class="fa-solid fa-chevron-right px-2"></i> Resultado Pesquisa</span>
+	<span class="breadcrumb-btns flex">
+		<form action="<?php echo BASE_URL; ?>trf2/delete_check_users" method="post">
+			<input type="hidden" name="checks_value" id="checks_value">
+
+			<?php if ($admin) : ?>
+				<input type="submit" class="btn-danger hover:btn-danger--hover cursor-pointer" value="Excluir">
+			<?php endif; ?>
+
+			<a href="<?php echo BASE_URL; ?>trf2/create" class="btn hover:btn-hover"><i class="fa-solid fa-plus"></i> Novo</a>
+		</form>
+	</span>
 </div>
 
 <div class="forms">
@@ -17,8 +28,15 @@
 </div>
 
 <?php if ($list_search) : ?>
-    <div class="table-header">
-		<div class="w-1/12">#</div>
+	<div class="table-header">
+		<div class="w-1/12 flex">
+			<?php if ($admin) : ?>
+				<span>
+					<input type="checkbox" name="checkall" id="checkall" onclick="toggle(this);">
+				</span>
+			<?php endif; ?>
+			<span>#</span>
+		</div>
 		<div class="w-1/12">Ano Proposta</div>
 		<div class="w-1/12">N&deg;. Precatório</div>
 		<div class="w-1/12">Credor</div>
@@ -31,10 +49,17 @@
 		<div class="w-1/12">Status</div>
 		<div class="w-1/12">Ação</div>
 	</div>
-    <?php foreach ($list_search as $trf2) : ?>
-        <div class="table-data hover:bg-slate-200">
-			<div class="w-1/12"><span><?php echo $trf2['ID']; ?></div>
-            <div class="w-1/12"><?php echo $trf2['ANO_PROPOSTA']; ?></div>
+	<?php foreach ($list_search as $trf2) : ?>
+		<div class="table-data hover:bg-slate-200">
+			<div class="w-1/12"><span>
+
+					<?php if ($admin) : ?>
+						<input type="checkbox" name="check" onclick="getChecks()" id="check[<?php echo $trf2['ID']; ?>]" value="<?php echo $trf2['ID']; ?>">
+					<?php endif; ?>
+
+					<?php echo $trf2['ID']; ?>
+			</div>
+			<div class="w-1/12"><?php echo $trf2['ANO_PROPOSTA']; ?></div>
 			<div class="w-1/12"><?php echo $trf2['NUMERO_DO_PRECATORIO']; ?></div>
 			<div class="w-1/12"><?php echo $trf2['CREDOR']; ?></div>
 			<div class="w-1/12"><?php echo $trf2['CPF_CNPJ']; ?></div>
@@ -48,13 +73,16 @@
 				<a href="<?php echo BASE_URL; ?>trf2/edit/<?php echo $trf2['ID']; ?>">Ver</a>
 			</div>
 		</div>
-    <?php endforeach; ?>
+	<?php endforeach; ?>
 
 <?php else : ?>
-    <div class="input-line justify-center items-center py-5">
-        <span>
-            <i class="fas fa-exclamation-circle fa-2x mr-2"></i>
-        </span>
-        <span>Nenhum registro encontrado!</span>
-    </div>
+	<div class="input-line justify-center items-center py-5">
+		<span>
+			<i class="fas fa-exclamation-circle fa-2x mr-2"></i>
+		</span>
+		<span>Nenhum registro encontrado!</span>
+	</div>
 <?php endif; ?>
+
+<!-- SCRIPTS JS -->
+<script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/delete-users.js"></script>

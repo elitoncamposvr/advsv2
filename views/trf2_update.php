@@ -14,7 +14,7 @@
 <?php if ($count_calc > 0) : ?>
     <form class="forms px-1" method="post">
     <?php else : ?>
-        <form class="forms border rounded-md px-1 bg-slate-100" target="_blank" method="post" action="<?php echo BASE_URL; ?>proposta/store">
+        <form class="forms px1" target="_blank" method="post" action="<?php echo BASE_URL; ?>proposta/store">
         <?php endif; ?>
         <div class="py-2.5">
             <div class="input-line">
@@ -271,90 +271,93 @@
         <input type="hidden" name="devedor" id="devedor" value="<?php echo $trf2_info['REQUERIDO']; ?>">
         <input type="hidden" name="precatorio" id="precatorio" value="<?php echo $trf2_info['NUMERO_DO_PRECATORIO']; ?>">
         <input type="hidden" name="advogado" id="advogado" value="<?php echo $trf2_info['ADVOGADO']; ?>">
-        <div class="input-line">
-            <div class="w-1/12 text-sm flex items-center">
-                Valor atualizado:
+        <div class="forms border rounded-md px-1 bg-slate-100">
+            <div class="input-line">
+                <div class="w-1/12 text-sm flex items-center">
+                    Valor atualizado:
+                </div>
+                <div class="w-5/12 mr-4">
+                    <input type="text" name="vlr_atualizado" id="vlr_atualizado" autofocus class="w-full" value="0,00" onblur="valorAtualizado()">
+                </div>
+                <div class="w-1/12 text-sm flex items-center">
+                    Valor Líquido:
+                </div>
+                <div class="w-5/12">
+                    <input type="hidden" name="vlr_liquido" id="vlr_liquido" readonly value="0">
+                    <input type="text" name="vlr_liquido_exib" id="vlr_liquido_exib" readonly class="w-full input-readonly" value="0">
+                </div>
             </div>
-            <div class="w-5/12 mr-4">
-                <input type="text" name="vlr_atualizado" id="vlr_atualizado" autofocus class="w-full" value="0,00" onblur="valorAtualizado()">
+            <div class="input-line">
+                <div class="w-1/12 text-sm flex items-center">
+                    Honorários:
+                </div>
+                <div class="w-5/12 flex mr-4">
+                    <input type="text" name="honorarios_perc" id="honorarios_perc" class="w-1/2 mr-1" value="0" onblur="valorAtualizado()">
+                    <input type="hidden" name="honorarios_vlr" id="honorarios_vlr">
+                    <input type="text" name="honorarios_vlr_exib" id="honorarios_vlr_exib" readonly class="w-1/2 input-readonly">
+                </div>
+                <div class="w-1/12 text-sm flex items-center">
+                    Proposta:
+                </div>
+                <div class="w-5/12 flex">
+                    <input type="text" name="proposta_vlr" id="proposta_vlr" class="w-1/2 mr-1" value="0" onblur="valorAtualizado()">
+                    <input type="text" name="proposta_perc" id="proposta_perc" readonly class="w-1/2 input-readonly">
+                </div>
             </div>
-            <div class="w-1/12 text-sm flex items-center">
-                Valor Líquido:
-            </div>
-            <div class="w-5/12">
-                <input type="hidden" name="vlr_liquido" id="vlr_liquido" readonly value="0">
-                <input type="text" name="vlr_liquido_exib" id="vlr_liquido_exib" readonly class="w-full input-readonly" value="0">
-            </div>
-        </div>
-        <div class="input-line">
-            <div class="w-1/12 text-sm flex items-center">
-                Honorários:
-            </div>
-            <div class="w-5/12 flex mr-4">
-                <input type="text" name="honorarios_perc" id="honorarios_perc" class="w-1/2 mr-1" value="0" onblur="valorAtualizado()">
-                <input type="hidden" name="honorarios_vlr" id="honorarios_vlr">
-                <input type="text" name="honorarios_vlr_exib" id="honorarios_vlr_exib" readonly class="w-1/2 input-readonly">
-            </div>
-            <div class="w-1/12 text-sm flex items-center">
-                Proposta:
-            </div>
-            <div class="w-5/12 flex">
-                <input type="text" name="proposta_vlr" id="proposta_vlr" class="w-1/2 mr-1" value="0" onblur="valorAtualizado()">
-                <input type="text" name="proposta_perc" id="proposta_perc" readonly class="w-1/2 input-readonly">
-            </div>
-        </div>
-        <div class="input-line">
-            <div class="w-1/12 text-sm flex items-center">
-                IR:
-            </div>
-            <div class="w-5/12 flex mr-4">
-                <input type="text" name="ir_perc" id="ir_perc" class="w-1/2 mr-1" value="0" onblur="valorAtualizado()">
-                <input type="hidden" name="ir_vlr" id="ir_vlr">
-                <input type="text" name="ir_vlr_exib" id="ir_vlr_exib" readonly class="w-1/2 input-readonly">
-            </div>
-            <div class="w-1/12">
+            <div class="input-line">
+                <div class="w-1/12 text-sm flex items-center">
+                    IR:
+                </div>
+                <div class="w-5/12 flex mr-4">
+                    <input type="text" name="ir_perc" id="ir_perc" class="w-1/2 mr-1" value="0" onblur="valorAtualizado()">
+                    <input type="hidden" name="ir_vlr" id="ir_vlr">
+                    <input type="text" name="ir_vlr_exib" id="ir_vlr_exib" readonly class="w-1/2 input-readonly">
+                </div>
+                <div class="w-1/12">
 
-            </div>
-            <div class="w-5/12">
+                </div>
+                <div class="w-5/12">
 
+                </div>
             </div>
-        </div>
-        <div class="input-line">
-            <div class="w-1/12 text-sm flex items-center">
-                RRA:
-            </div>
-            <div class="w-5/12 flex mr-4">
-                <input type="text" name="rra_perc" id="rra_perc" class="w-1/2 mr-1" value="0" onblur="valorAtualizado()">
-                <input type="hidden" name="rra_vlr" id="rra_vlr">
-                <input type="text" name="rra_vlr_exib" id="rra_vlr_exib" readonly class="w-1/2 input-readonly">
-            </div>
-            <div class="w-1/12 text-sm flex items-center">
+            <div class="input-line">
+                <div class="w-1/12 text-sm flex items-center">
+                    RRA:
+                </div>
+                <div class="w-5/12 flex mr-4">
+                    <input type="text" name="rra_perc" id="rra_perc" class="w-1/2 mr-1" value="0" onblur="valorAtualizado()">
+                    <input type="hidden" name="rra_vlr" id="rra_vlr">
+                    <input type="text" name="rra_vlr_exib" id="rra_vlr_exib" readonly class="w-1/2 input-readonly">
+                </div>
+                <div class="w-1/12 text-sm flex items-center">
 
-            </div>
-            <div class="w-5/12">
+                </div>
+                <div class="w-5/12">
 
+                </div>
             </div>
-        </div>
-        <div class="input-line">
-            <div class="w-1/12 text-sm flex items-center">
-                PSS:
+            <div class="input-line">
+                <div class="w-1/12 text-sm flex items-center">
+                    PSS:
+                </div>
+                <div class="w-5/12 flex mr-4">
+                    <input type="text" name="pss_perc" id="pss_perc" class="w-1/2 mr-1" value="0" onblur="valorAtualizado()">
+                    <input type="hidden" name="pss_vlr" id="pss_vlr">
+                    <input type="text" name="pss_vlr_exib" id="pss_vlr_exib" readonly class="w-1/2 input-readonly">
+                </div>
+                <div class="w-1/12 text-sm flex items-center bg-teal-500 py-1 rounded-l-md">
+                    Máximo a Pagar:
+                </div>
+                <div class="w-5/12 flex bg-teal-500 p-1 rounded-r-md">
+                    <input type="text" name="max_perc" id="max_perc" class="w-1/2 mr-1" value="0" onblur="valorAtualizado()">
+                    <input type="hidden" name="max_vlr" id="max_vlr">
+                    <input type="text" name="max_vlr_exib" id="max_vlr_exib" readonly class="w-1/2 input-readonly">
+                </div>
             </div>
-            <div class="w-5/12 flex mr-4">
-                <input type="text" name="pss_perc" id="pss_perc" class="w-1/2 mr-1" value="0" onblur="valorAtualizado()">
-                <input type="hidden" name="pss_vlr" id="pss_vlr">
-                <input type="text" name="pss_vlr_exib" id="pss_vlr_exib" readonly class="w-1/2 input-readonly">
-            </div>
-            <div class="w-1/12 text-sm flex items-center bg-teal-500 py-1 rounded-l-md">
-                Máximo a Pagar:
-            </div>
-            <div class="w-5/12 flex bg-teal-500 p-1 rounded-r-md">
-                <input type="text" name="max_perc" id="max_perc" class="w-1/2 mr-1" value="0" onblur="valorAtualizado()">
-                <input type="hidden" name="max_vlr" id="max_vlr">
-                <input type="text" name="max_vlr_exib" id="max_vlr_exib" readonly class="w-1/2 input-readonly">
-            </div>
-        </div>
-        <div class="w-full flex justify-center py-3">
-            <button class="btn-success hover:btn-success--hover" type="submit"><i class="fa-solid fa-file-contract"></i> GERAR PROPOSTA</button>
+            <div class="w-full flex justify-center py-3">
+                    <button class="btn-success hover:btn-success--hover mx-1" type="submit" formaction="<?php echo BASE_URL; ?>trf2/update/<?php echo $trf2_info['ID']; ?>"><i class="fa-solid fa-file-contract"></i> GERAR PROPOSTA</button>
+                    <button class="btn hover:btn-hover mx-1" type="submit" formaction="<?php echo BASE_URL; ?>trf2/update/<?php echo $trf2_info['ID']; ?>"><i class="fa-regular fa-floppy-disk"></i> SALVAR PROPOSTA</button>
+                </div>
         </div>
     </form>
 

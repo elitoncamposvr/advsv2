@@ -728,7 +728,8 @@ main {
 
 input[type=text],
     input[type=email],
-    input[type=password] {
+    input[type=password],
+    input[type=number] {
   border-radius: 0.375rem;
   border-width: 1px;
   --tw-border-opacity: 1;
@@ -991,6 +992,10 @@ label {
   width: 25%;
 }
 
+.w-4\/12 {
+  width: 33.333333%;
+}
+
 .w-4\/6 {
   width: 66.666667%;
 }
@@ -1001,6 +1006,10 @@ label {
 
 .w-5\/6 {
   width: 83.333333%;
+}
+
+.w-6\/12 {
+  width: 50%;
 }
 
 .w-8\/12 {
@@ -1207,6 +1216,11 @@ label {
   text-align: right;
 }
 
+.text-base {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
 .text-lg {
   font-size: 1.125rem;
   line-height: 1.75rem;
@@ -1225,11 +1239,6 @@ label {
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
-}
-
-.text-base {
-  font-size: 1rem;
-  line-height: 1.5rem;
 }
 
 .font-semibold {

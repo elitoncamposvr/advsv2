@@ -92,6 +92,8 @@ class tjspController extends controller
 		$tel_fixo = addslashes($_POST['tel_fixo']);
 		$email = addslashes($_POST['email']);
 		$endereco = addslashes($_POST['endereco']);
+		$idade = addslashes($_POST['idade']);
+		$falecido = addslashes($_POST['falecido']);
 		$user_id = addslashes($_POST['user_id']);
 
 		$tjsp->create(
@@ -112,6 +114,8 @@ class tjspController extends controller
 			$tel_fixo,
 			$email,
 			$endereco,
+			$idade,
+			$falecido,
 			$user_id
 		);
 		header("Location: " . BASE_URL . "tjsp");
@@ -170,6 +174,8 @@ class tjspController extends controller
 		$cel = addslashes($_POST['cel']);
 		$tel_fixo = addslashes($_POST['tel_fixo']);
 		$email = addslashes($_POST['email']);
+		$idade = addslashes($_POST['idade']);
+		$falecido = addslashes($_POST['falecido']);
 		$endereco = addslashes($_POST['endereco']);
 
 		$vlr_atualizado = addslashes($_POST['vlr_atualizado']);
@@ -187,7 +193,7 @@ class tjspController extends controller
 		$max_perc = addslashes($_POST['max_perc']);
 		$max_vlr = addslashes($_POST['max_vlr_exib']);
 		$id_processo = addslashes($_POST['id_processo']);
-		$tipo = addslashes($_POST['tipo']);
+		$tipo_calc = addslashes($_POST['tipo_calc']);
 		$id_tabela = addslashes($_POST['id_tabela']);
 		$calc_id = addslashes($_POST['calc_id']);
 
@@ -232,7 +238,7 @@ class tjspController extends controller
 			$max_perc,
 			$max_vlr,
 			$id_processo,
-			$tipo,
+			$tipo_calc,
 			$id_tabela
 		);
 
@@ -254,6 +260,8 @@ class tjspController extends controller
 			$cel,
 			$tel_fixo,
 			$email,
+			$idade,
+			$falecido,
 			$endereco,
 			$user_id
 		);
@@ -287,6 +295,8 @@ class tjspController extends controller
 		$cel = addslashes($_POST['cel']);
 		$tel_fixo = addslashes($_POST['tel_fixo']);
 		$email = addslashes($_POST['email']);
+		$idade = addslashes($_POST['idade']);
+		$falecido = addslashes($_POST['falecido']);
 		$endereco = addslashes($_POST['endereco']);
 		$user_id = addslashes($_POST['user_id']);
 
@@ -305,7 +315,7 @@ class tjspController extends controller
 		$max_perc = addslashes($_POST['max_perc']);
 		$max_vlr = addslashes($_POST['max_vlr_exib']);
 		$id_processo = addslashes($_POST['id_processo']);
-		$tipo = addslashes($_POST['tipo']);
+		$tipo_calc = addslashes($_POST['tipo_calc']);
 		$id_tabela = addslashes($_POST['id_tabela']);
 		$calc_id = addslashes($_POST['calc_id']);
 
@@ -332,7 +342,7 @@ class tjspController extends controller
 			$max_perc,
 			$max_vlr,
 			$id_processo,
-			$tipo,
+			$tipo_calc,
 			$id_tabela
 		);
 
@@ -354,6 +364,8 @@ class tjspController extends controller
 			$cel,
 			$tel_fixo,
 			$email,
+			$idade, 
+			$falecido,
 			$endereco,
 			$user_id
 		);
@@ -439,6 +451,7 @@ class tjspController extends controller
 		$search = "$id $nome $cpf $processo $n_ordem $tipo $status";
 
 		$data['list_search'] = $tjsp->getSearch($search);
+		$data['admin'] = $u->hasPermission('is_admin');
 		$this->loadTemplate("tjsp_search", $data);
 	}
 

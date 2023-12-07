@@ -1,5 +1,16 @@
 <div class="breadcrumb">
-<span class="breadcrumb-title">TJSP <i class="fa-solid fa-chevron-right px-2"></i> Resultado Pesquisa</span>
+	<span class="breadcrumb-title">TJSP <i class="fa-solid fa-chevron-right px-2"></i> Resultado Pesquisa</span>
+	<span class="breadcrumb-btns flex">
+		<form action="<?php echo BASE_URL; ?>tjsp/delete_check_users" method="post">
+			<input type="hidden" name="checks_value" id="checks_value">
+
+			<?php if ($admin) : ?>
+				<input type="submit" class="btn-danger hover:btn-danger--hover cursor-pointer" value="Excluir">
+			<?php endif; ?>
+
+			<a href="<?php echo BASE_URL; ?>tjsp/create" class="btn hover:btn-hover"><i class="fa-solid fa-plus"></i> Novo</a>
+		</form>
+	</span>
 </div>
 
 <div class="forms">
@@ -19,7 +30,16 @@
 
 <?php if ($list_search) : ?>
 	<div class="table-header">
-		<div class="w-1/12">#</div>
+		<div class="w-1/12">
+			<div class="w-1/12 flex">
+				<?php if ($admin) : ?>
+					<span>
+						<input type="checkbox" name="checkall" id="checkall" onclick="toggle(this);">
+					</span>
+				<?php endif; ?>
+				<span>#</span>
+			</div>
+		</div>
 		<div class="w-2/12">Processo</div>
 		<div class="w-1/12">Nome</div>
 		<div class="w-1/12">CPF</div>
@@ -33,7 +53,14 @@
 	</div>
 	<?php foreach ($list_search as $tjsp) : ?>
 		<div class="table-data hover:bg-slate-200">
-			<div class="w-1/12"><?php echo $tjsp['id']; ?></div>
+			<div class="w-1/12">
+
+				<?php if ($admin) : ?>
+					<input type="checkbox" name="check" onclick="getChecks()" id="check[<?php echo $tjsp['id']; ?>]" value="<?php echo $tjsp['id']; ?>">
+				<?php endif; ?>
+
+				<?php echo $tjsp['id']; ?>
+			</div>
 			<div class="w-2/12 text-xs"><?php echo $tjsp['processo']; ?></div>
 			<div class="w-1/12"><?php echo $tjsp['nome']; ?></div>
 			<div class="w-1/12"><?php echo $tjsp['cpf']; ?></div>
@@ -55,3 +82,6 @@
 	</div>
 	<p class="flash_info text-sm">*Refaça sua busca ou volte a página inicial do TJSP.</p>
 <?php endif; ?>
+
+<!-- SCRIPTS JS -->
+<script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/delete-users.js"></script>
