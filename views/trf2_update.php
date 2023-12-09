@@ -18,7 +18,7 @@
         <?php endif; ?>
         <div class="py-2.5">
             <div class="input-line">
-                <div class="w-2/6 mr-1">
+                <div class="w-1/12 mr-1">
                     <label for="ANO_PROPOSTA">Ano Proposta</label>
                     <input type="text" name="ANO_PROPOSTA" id="ANO_PROPOSTA" value="<?php echo $trf2_info['ANO_PROPOSTA']; ?>" <?php if (!$admin) {
                                                                                                                                     echo "readonly class='w-full bg-slate-300'";
@@ -26,17 +26,28 @@
                                                                                                                                     echo "class='w-full'";
                                                                                                                                 }; ?>>
                 </div>
-                <div class="w-2/6 mr-1">
+                <div class="w-6/12 mr-1">
                     <label for="CREDOR">Credor</label>
                     <input type="text" name="CREDOR" id="CREDOR" class="w-full" value="<?php echo $trf2_info['CREDOR']; ?>">
                 </div>
-                <div class="w-2/6 mr-1">
+                <div class="w-3/12 mr-1">
                     <label for="NUMERO_DO_PRECATORIO">Número do Precatório</label>
                     <input type="text" name="NUMERO_DO_PRECATORIO" id="NUMERO_DO_PRECATORIO" value="<?php echo $trf2_info['NUMERO_DO_PRECATORIO']; ?>" <?php if (!$admin) {
                                                                                                                                                             echo "readonly class='w-full bg-slate-300'";
                                                                                                                                                         } else {
                                                                                                                                                             echo "class='w-full'";
                                                                                                                                                         }; ?>>
+                </div>
+                <div class="w-1/12 mr-1">
+                    <label for="idade">Idade</label>
+                    <input type="number" name="idade" id="idade" class="w-full" value="<?php echo $trf2_info['idade']; ?>">
+                </div>
+                <div class="w-1/12 mr-1">
+                    <label for="falecido">Falecido</label>
+                    <select name="falecido" id="falecido" class="w-full">
+                        <option <?php echo ($trf2_info['falecido'] == '0') ? 'selected="selected"' : ''; ?> value="0">Não</option>
+                        <option <?php echo ($trf2_info['falecido'] == '1') ? 'selected="selected"' : ''; ?> value="1">Sim</option>
+                    </select>
                 </div>
             </div>
             <div class="input-line">

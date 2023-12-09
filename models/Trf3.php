@@ -97,6 +97,8 @@ class Trf3 extends model
 		$tel_fixo,
 		$email,
 		$endereco,
+		$idade,
+		$falecido,
 		$user_id
 	) {
 
@@ -126,6 +128,8 @@ class Trf3 extends model
 			tel_fixo = :tel_fixo,
 			email = :email,
 			endereco = :endereco,
+			idade = :idade,
+			falecido = :falecido,
 			user_id = :user_id
 		");
 
@@ -151,6 +155,8 @@ class Trf3 extends model
 		$sql->bindValue(":tel_fixo", $tel_fixo);
 		$sql->bindValue(":email", $email);
 		$sql->bindValue(":endereco", $endereco);
+		$sql->bindValue(":idade", $idade);
+		$sql->bindValue(":falecido", $falecido);
 		$sql->bindValue(":user_id", $user_id);
 		$sql->execute();
 	}
@@ -179,6 +185,8 @@ class Trf3 extends model
 		$tel_fixo,
 		$email,
 		$endereco,
+		$idade,
+		$falecido,
 		$user_id
 
 	) {
@@ -208,7 +216,9 @@ class Trf3 extends model
 			cel = :cel,
 			tel_fixo = :tel_fixo,
 			email = :email,
-			endereco = :endereco
+			endereco = :endereco,
+			idade = :idade,
+			falecido = :falecido
 		WHERE 
 			id = :id");
 
@@ -235,6 +245,8 @@ class Trf3 extends model
 		$sql->bindValue(":tel_fixo", $tel_fixo);
 		$sql->bindValue(":email", $email);
 		$sql->bindValue(":endereco", $endereco);
+		$sql->bindValue(":idade", $idade);
+		$sql->bindValue(":falecido", $falecido);
 		$sql->execute();
 
 

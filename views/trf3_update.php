@@ -18,7 +18,7 @@
         <?php endif; ?>
         <div class="py-2.5">
             <div class="input-line">
-                <div class="w-2/6 mr-1">
+                <div class="w-2/12 mr-1">
                     <label for="numero">Número</label>
                     <input type="text" name="numero" id="numero" value="<?php echo $trf3_info['numero']; ?>" <?php if (!$admin) {
                                                                                                                     echo "readonly class='w-full bg-slate-300'";
@@ -26,7 +26,7 @@
                                                                                                                     echo "class='w-full'";
                                                                                                                 }; ?>>
                 </div>
-                <div class="w-2/6 mr-1">
+                <div class="w-5/12 mr-1">
                     <label for="requerido">Requerido</label>
                     <input type="text" name="requerido" id="requerido" value="<?php echo $trf3_info['requerido']; ?>" <?php if (!$admin) {
                                                                                                                             echo "readonly class='w-full bg-slate-300'";
@@ -34,9 +34,20 @@
                                                                                                                             echo "class='w-full'";
                                                                                                                         }; ?>>
                 </div>
-                <div class="w-2/6 mr-1">
+                <div class="w-3/12 mr-1">
                     <label for="requerentes">Requerentes</label>
                     <input type="text" name="requerentes" id="requerentes" value="<?php echo $trf3_info['requerentes']; ?>" class="w-full">
+                </div>
+                <div class="w-1/12 mr-1">
+                    <label for="idade">Idade</label>
+                    <input type="number" name="idade" id="idade" class="w-full" value="<?php echo $trf3_info['idade']; ?>">
+                </div>
+                <div class="w-1/12 mr-1">
+                    <label for="falecido">Falecido</label>
+                    <select name="falecido" id="falecido" class="w-full">
+                        <option <?php echo ($trf3_info['falecido'] == '0') ? 'selected="selected"' : ''; ?> value="0">Não</option>
+                        <option <?php echo ($trf3_info['falecido'] == '1') ? 'selected="selected"' : ''; ?> value="1">Sim</option>
+                    </select>
                 </div>
             </div>
             <div class="input-line">

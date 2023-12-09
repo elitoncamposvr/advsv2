@@ -92,6 +92,8 @@ class Trf2 extends model
 		$TEL_FIXO,
 		$EMAIL,
 		$ENDERECO,
+		$idade,
+		$falecido,
 		$user_id
 	) {
 
@@ -116,6 +118,8 @@ class Trf2 extends model
 			TEL_FIXO = :TEL_FIXO,
 			EMAIL = :EMAIL,
 			ENDERECO = :ENDERECO,
+			idade = :idade,
+			falecido = :falecido,
 			user_id = :user_id
 		");
 		$sql->bindValue(":ANO_PROPOSTA", $ANO_PROPOSTA);
@@ -135,6 +139,8 @@ class Trf2 extends model
 		$sql->bindvalue(":TEL_FIXO", $TEL_FIXO);
 		$sql->bindValue(":EMAIL", $EMAIL);
 		$sql->bindValue(":ENDERECO", $ENDERECO);
+		$sql->bindValue(":idade", $idade);
+		$sql->bindValue(":falecido", $falecido);
 		$sql->bindValue(":user_id", $user_id);
 		$sql->execute();
 	}
@@ -158,6 +164,8 @@ class Trf2 extends model
 		$TEL_FIXO,
 		$EMAIL,
 		$ENDERECO,
+		$idade,
+		$falecido,
 		$user_id
 	) {
 
@@ -181,7 +189,9 @@ class Trf2 extends model
 			CEL = :CEL,
 			TEL_FIXO = :TEL_FIXO,
 			EMAIL = :EMAIL,
-			ENDERECO = :ENDERECO
+			ENDERECO = :ENDERECO,
+			idade = :idade,
+			falecido = :falecido
 		WHERE 
 			ID = :ID");
 		$sql->bindValue(":ID", $ID);
@@ -202,6 +212,8 @@ class Trf2 extends model
 		$sql->bindvalue(":TEL_FIXO", $TEL_FIXO);
 		$sql->bindValue(":EMAIL", $EMAIL);
 		$sql->bindValue(":ENDERECO", $ENDERECO);
+		$sql->bindValue(":idade", $idade);
+		$sql->bindValue(":falecido", $falecido);
 		$sql->execute();
 
 		if($user_id != 'empty'){

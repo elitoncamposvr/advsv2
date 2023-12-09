@@ -92,6 +92,8 @@ class trf2Controller extends controller
 		$TEL_FIXO = addslashes($_POST['TEL_FIXO']);
 		$EMAIL = addslashes($_POST['EMAIL']);
 		$ENDERECO = addslashes($_POST['ENDERECO']);
+		$idade = addslashes($_POST['idade']);
+		$falecido = addslashes($_POST['falecido']);
 		$user_id = addslashes($_POST['user_id']);
 
 		$trf2->create(
@@ -112,6 +114,8 @@ class trf2Controller extends controller
 			$TEL_FIXO,
 			$EMAIL,
 			$ENDERECO,
+			$idade,
+			$falecido,
 			$user_id
 		);
 		header("Location: " . BASE_URL . "trf2");
@@ -171,6 +175,8 @@ class trf2Controller extends controller
 		$TEL_FIXO = addslashes($_POST['TEL_FIXO']);
 		$EMAIL = addslashes($_POST['EMAIL']);
 		$ENDERECO = addslashes($_POST['ENDERECO']);
+		$idade = addslashes($_POST['idade']);
+		$falecido = addslashes($_POST['falecido']);
 
 		
 		$vlr_atualizado = addslashes($_POST['vlr_atualizado']);
@@ -236,6 +242,8 @@ class trf2Controller extends controller
 			$TEL_FIXO,
 			$EMAIL,
 			$ENDERECO,
+			$idade,
+			$falecido,
 			$user_id
 		);
 
@@ -289,6 +297,8 @@ class trf2Controller extends controller
 		$TEL_FIXO = addslashes($_POST['TEL_FIXO']);
 		$EMAIL = addslashes($_POST['EMAIL']);
 		$ENDERECO = addslashes($_POST['ENDERECO']);
+		$idade = addslashes($_POST['idade']);
+		$falecido = addslashes($_POST['falecido']);
 
 		
 		$vlr_atualizado = addslashes($_POST['vlr_atualizado']);
@@ -335,6 +345,8 @@ class trf2Controller extends controller
 			$TEL_FIXO,
 			$EMAIL,
 			$ENDERECO,
+			$idade,
+			$falecido,
 			$user_id
 		);
 

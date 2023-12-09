@@ -4,17 +4,28 @@
 
 <form class="w-full py-2.5" action="<?php echo BASE_URL; ?>trf3/store" method="post">
     <div class="input-line">
-        <div class="w-2/6 mr-1">
+        <div class="w-2/12 mr-1">
             <label for="numero">Número</label>
             <input type="text" name="numero" id="numero" class="w-full">
         </div>
-        <div class="w-2/6 mr-1">
+        <div class="w-5/12 mr-1">
             <label for="requerido">Requerido</label>
             <input type="text" name="requerido" id="requerido" class="w-full">
         </div>
-        <div class="w-2/6 mr-1">
+        <div class="w-3/12 mr-1">
             <label for="requerentes">Requerentes</label>
             <input type="text" name="requerentes" id="requerentes" class="w-full">
+        </div>
+        <div class="w-1/12 mr-1">
+            <label for="idade">Idade</label>
+            <input type="number" name="idade" id="idade" class="w-full">
+        </div>
+        <div class="w-1/12 mr-1">
+            <label for="falecido">Falecido</label>
+            <select name="falecido" id="falecido" class="w-full">
+                <option value="0">Não</option>
+                <option value="1">Sim</option>
+            </select>
         </div>
     </div>
     <div class="input-line">

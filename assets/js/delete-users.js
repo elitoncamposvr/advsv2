@@ -1,8 +1,6 @@
 function getChecks() {
     let check = document.querySelectorAll('[name=check]');
     let checkItens = document.querySelectorAll('[name=check]:checked');
-    let check_all = document.querySelector('#checkall');
-    let check_all_values = document.getElementById('checks_value').value;
     let check_values = [];
     let check_array = [];
 
