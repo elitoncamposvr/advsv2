@@ -14,7 +14,7 @@
 <?php if ($count_calc > 0) : ?>
     <form class="forms px-1" method="post">
     <?php else : ?>
-        <form class="forms px-1" target="_blank" method="post" action="<?php echo BASE_URL; ?>proposta/store">
+        <form class="forms px-1" method="post" action="<?php echo BASE_URL; ?>proposta/store">
         <?php endif; ?>
         <div class="py-2.5">
             <div class="input-line">
