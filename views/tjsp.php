@@ -1,8 +1,15 @@
 <div class="breadcrumb">
 	<span class="breadcrumb-title">TJSP</span>
-	<span class="breadcrumb-btns flex">
+	<span class="breadcrumb-btns flex items-center">
+		<span>
+			<a href="" class="btn-outline hover:btn-outline--hover">X clientes aptos para contato</a>
+		</span>
+		<span class="px-3">
+			<a href="" class="btn-outline hover:btn-outline--hover">X clientes agendados</a>
+		</span>
 		<form action="<?php echo BASE_URL; ?>tjsp/delete_check_users" method="post">
 			<input type="hidden" name="checks_value" id="checks_value">
+			<input type="hidden" name="client_id" id="client_id" value="<?php echo $tjsp['id']; ?>">
 
 			<?php if ($admin) : ?>
 				<input type="submit" class="btn-danger hover:btn-danger--hover cursor-pointer" value="Excluir">

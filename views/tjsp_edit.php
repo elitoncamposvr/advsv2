@@ -8,13 +8,19 @@
 </div>
 
 <div class="w-full">
-    <a href="<?php echo BASE_URL; ?>tjsp/files/<?php echo $tjsp_info['id']; ?>" class="btn-success hover:btn-success--hover"><i class="fa-solid fa-file-pdf"></i> ARQUIVOS DO CLIENTE</a>
+    <span>
+        <a href="<?php echo BASE_URL; ?>tjsp/files/<?php echo $tjsp_info['id']; ?>" class="btn-success hover:btn-success--hover"><i class="fa-solid fa-file-pdf"></i> ARQUIVOS DO CLIENTE</a>
+    </span>
+    <span>
+        <span class="btn-alert hover:btn-alert--hover" id="openModalBtn"><i class="fa-solid fa-file-pdf"></i> AGENDAR CLIENTE</span>
+    </span>
 </div>
 
 <?php if ($count_calc > 0) : ?>
     <form class="forms px-1" method="post">
     <?php else : ?>
         <form class="forms px-1" method="post" action="<?php echo BASE_URL; ?>proposta/store_without_pdf">
+            <input type="hidden" name="client_id" id="client_id" value="<?php echo $tjsp_info['id']; ?>">
         <?php endif; ?>
 
         <div class="py-2.5 forms px-1">
@@ -280,6 +286,7 @@
     <?php else : ?>
         <div class="py-2.5 forms border rounded-md px-1 bg-slate-100">
             <input type="hidden" name="tipo_calc" id="tipo_calc" value="tjsp">
+            <input type="hidden" name="calc_id" id="calc_id" value="<?php echo $count_calc; ?>">
             <input type="hidden" name="id_processo" id="id_processo" value="<?php echo $tjsp_info['processo']; ?>">
             <input type="hidden" name="id_tabela" id="id_tabela" value="<?php echo $tjsp_info['id']; ?>">
             <input type="hidden" name="requerente" id="requerente" value="<?php echo $tjsp_info['nome']; ?>">
@@ -369,13 +376,51 @@
                 </div>
             </div>
             <div class="w-full flex justify-center py-3">
-                    <button class="btn-success hover:btn-success--hover mx-1" type="submit" formaction="<?php echo BASE_URL; ?>tjsp/update/<?php echo $tjsp_info['id']; ?>"><i class="fa-solid fa-file-contract"></i> GERAR PROPOSTA</button>
-                    <button class="btn hover:btn-hover mx-1" type="submit" formaction="<?php echo BASE_URL; ?>tjsp/update_without_pdf/<?php echo $tjsp_info['id']; ?>"><i class="fa-regular fa-floppy-disk"></i> SALVAR PROPOSTA</button>
-                </div>
+                <button class="btn-success hover:btn-success--hover mx-1" type="submit" formaction="<?php echo BASE_URL; ?>tjsp/update/<?php echo $tjsp_info['id']; ?>"><i class="fa-solid fa-file-contract"></i> GERAR PROPOSTA</button>
+                <button class="btn hover:btn-hover mx-1" type="submit" formaction="<?php echo BASE_URL; ?>tjsp/update_without_pdf/<?php echo $tjsp_info['id']; ?>"><i class="fa-regular fa-floppy-disk"></i> SALVAR PROPOSTA</button>
+            </div>
         </div>
     </form>
 
 <?php endif; ?>
 
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <form id="div_form">
+            <input type="hidden" name="client_name" id="client_name" value="<?php echo $tjsp_info['id']; ?>">
+            <input type="hidden" name="client_type" id="client_type" value="tjsp">
+            <div class="input-line">
+                <div class="w-full bg-slate-200 rounded-md p-2">
+                    <label for="schedule_date">Data do agendamento</label>
+                    <input type="date" name="schedule_date" id="schedule_date" class="w-full" required>
+                </div>
+            </div>
+            <div class="input-line">
+                <div class="w-full bg-slate-200 rounded-md p-2">
+                    <label for="reason">Motivo do contato</label>
+                    <textarea name="reason" id="reason" class="w-full" rows="4" required></textarea>
+                </div>
+            </div>
+            <div class="flex justify-center pt-2.5">
+                <button id="client_add_button" class="btn-success hover:btn-success--hover">Agendar Cliente</button>
+                <a class="btn-danger hover:btn-danger--hover mx-1.5" id="closeModalBtn">Cancelar</a>
+            </div>
+        </form>
+        <div id="div_success" class="hide flex-col">
+            <div class="py-3 w-full text-center">
+                Cliente agendado com sucesso!
+            </div>
+            <div class="w-full text-center">
+                <span class="btn-alert hover:btn-alert--hover" id="closeModal">Fechar</span>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/jquery.mask.js"></script>
 <script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/calculadora.js"></script>
+<script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/schedule.js"></script>
+<script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/modal.js"></script>

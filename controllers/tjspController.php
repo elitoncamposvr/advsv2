@@ -325,6 +325,48 @@ class tjspController extends controller
 			$user_id = 'empty';
 		}
 
+		if ($calc_id < 1) {
+			$proposta->store(
+				$vlr_atualizado,
+				$honorarios_perc,
+				$honorarios_vlr,
+				$ir_perc,
+				$ir_vlr,
+				$rra_perc,
+				$rra_vlr,
+				$pss_perc,
+				$pss_vlr,
+				$vlr_liquido,
+				$proposta_perc,
+				$proposta_vlr,
+				$max_perc,
+				$max_vlr,
+				$id_processo,
+				$tipo_calc,
+				$id_tabela
+			);
+		} else {
+			$proposta->update(
+				$calc_id,
+				$vlr_atualizado,
+				$honorarios_perc,
+				$honorarios_vlr,
+				$ir_perc,
+				$ir_vlr,
+				$rra_perc,
+				$rra_vlr,
+				$pss_perc,
+				$pss_vlr,
+				$vlr_liquido,
+				$proposta_perc,
+				$proposta_vlr,
+				$max_perc,
+				$max_vlr,
+				$id_processo,
+				$tipo_calc,
+				$id_tabela
+			);
+		}
 		$proposta->update(
 			$calc_id,
 			$vlr_atualizado,
@@ -364,7 +406,7 @@ class tjspController extends controller
 			$cel,
 			$tel_fixo,
 			$email,
-			$idade, 
+			$idade,
 			$falecido,
 			$endereco,
 			$user_id

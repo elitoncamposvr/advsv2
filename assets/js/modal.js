@@ -1,6 +1,7 @@
 const modal = document.getElementById('myModal');
 const btn = document.getElementById('openModalBtn');
 const span = document.getElementById('closeModalBtn');
+const close = document.getElementById('closeModal');
 
 btn.onclick = function () {
     modal.style.display = 'flex';
@@ -8,6 +9,10 @@ btn.onclick = function () {
 
 
 span.onclick = function () {
+    modal.style.display = 'none';
+};
+
+close.onclick = function () {
     modal.style.display = 'none';
 };
 

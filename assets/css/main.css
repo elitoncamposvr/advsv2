@@ -668,6 +668,20 @@ main {
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
+.btn-outline {
+  cursor: pointer;
+  border-radius: 0.375rem;
+  border-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: rgb(148 163 184 / var(--tw-border-opacity));
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
 .btn-success {
   cursor: pointer;
   border-radius: 0.375rem;
@@ -823,6 +837,10 @@ label {
   max-width: 80rem;
   align-items: center;
   justify-content: center;
+}
+
+.hide {
+  display: none;
 }
 
 /* MODAL */
@@ -1196,6 +1214,11 @@ label {
   padding-bottom: 1.25rem;
 }
 
+.px-3 {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
 .pt-2 {
   padding-top: 0.5rem;
 }
@@ -1269,6 +1292,13 @@ label {
 .hover\:btn-hover:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(71 85 105 / var(--tw-bg-opacity));
+}
+
+.hover\:btn-outline--hover:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(71 85 105 / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
 .hover\:btn-success--hover:hover {
